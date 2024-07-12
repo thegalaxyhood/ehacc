@@ -1,0 +1,101 @@
+body {
+    font-family: Arial, sans-serif;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    margin: 0;
+    background-color: #f4f4f4;
+}
+
+.container {
+    text-align: center;
+    background: white;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    width: 300px;
+}
+
+header h1 {
+    font-size: 1.2em;
+    margin-bottom: 20px;
+}
+
+.vote-section {
+    margin-bottom: 20px;
+}
+
+.checkmark {
+    width: 50px;
+    height: 50px;
+    margin-bottom: 10px;
+}
+
+.buttons {
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+    margin-bottom: 10px;
+}
+
+.vote-button {
+    padding: 10px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    color: white;
+    font-size: 0.8em;
+    display: flex;
+    align-items: center;
+    gap: 5px;
+    text-decoration: none;
+}
+
+.instagram {
+    background-color: #3f729b;
+}
+
+.email {
+    background-color: #d44638;
+}
+
+.facebook {
+    background-color: #3b5998;
+}
+
+.vote-info {
+    margin-bottom: 10px;
+}
+
+.vote-info p {
+    margin: 5px 0;
+}
+
+footer {
+    font-size: 0.8em;
+    color: gray;
+}
+
+.input-group {
+    margin-bottom: 15px;
+    text-align: left;
+}
+
+.input-group label {
+    display: block;
+    margin-bottom: 5px;
+}
+
+.input-group input {
+    width: 100%;
+    padding: 8px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    box-sizing: border-box;
+}
+
+footer {
+    font-size: 0.8em;
+    color: gray;
+}
